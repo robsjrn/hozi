@@ -1,0 +1,80 @@
+<loading-indicator>Saving ..</loading-indicator>
+  
+  <div class='has-error' *ngIf='errorMessage'>
+    
+    
+    <div class="slds-notify_container">
+  <div class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert">
+    <button class="slds-button slds-button--icon-inverse slds-notify__close">
+      <svg aria-hidden="true" class="slds-button__icon">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>
+      <span class="slds-assistive-text">Close</span>
+    </button>
+    <span class="slds-assistive-text">Info</span>
+    <h2>{{errorMessage}}</h2>
+  </div>
+</div>
+     
+    </div>
+
+
+
+<button (click)="addProperty()" 
+       class="slds-button slds-button--neutral " aria-live="assertive" >
+        <span class="fa-stack">
+				 <i class="fa fa-plus "></i>
+			</span>
+      Add
+</button>
+<div class="slds-form-element slds-lookup" data-select="single" data-scope="single">
+  <label class="slds-form-element__label" for="lookup-01">Your Properties</label>
+  <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+   
+    <input [(ngModel)]='propertyFilter'  class="slds-lookup__search-input slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" placeholder="Search Properties" />
+  </div>
+</div>
+     <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal">
+  <thead>
+    <tr class="slds-text-heading--label">
+     
+                      <th >
+                        <div class="slds-truncate">#
+                          </div>
+                        </th>
+                      <th >
+                        <div class="slds-truncate">Name
+                          </div></th>
+                      <th >Location</th>
+                      <th >Type</th>
+                      <th >Status</th>
+                      <th ></th>
+                      <th >Action</th>
+                      <th ></th>
+              
+    </tr>
+  </thead>
+  <tbody>
+
+           <tr  *ngFor='let property of properties;let idx = index ' class="slds-hint-parent">
+                     <td >{{idx +1}}</td>
+                      <td data-label="Property Name">{{property.name}}</td>
+                      <td data-label="Property Location">{{property.location}}</td>         
+                      <td data-label="Property Type">{{property.type}}</td>
+                      <td data-label="Property Status">For  {{property.status}} </td>
+                      <td data-label="Property Units">
+                        <a *ngIf="property.status=='rent'" > Units</a>
+                        <a *ngIf="property.status=='sale'"> Units</a>         
+                      </td>
+                     
+                      <td class="slds-cell-shrink">
+                        <div class="slds-button-group" role="group">
+                          <button class="slds-button slds-button--neutral">View </button>
+                          <button class="slds-button slds-button--neutral">Edit</button>
+                          <button class="slds-button slds-button--neutral">delete</button>
+                        </div>
+											</td>
+                    </tr>
+   
+  </tbody>
+</table>

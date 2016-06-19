@@ -17,6 +17,7 @@
 
   "files": [
     "main.ts",
+    "pm.ts",
     "typings.d.ts"
   ]
 }

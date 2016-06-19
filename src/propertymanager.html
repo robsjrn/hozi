@@ -2,20 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hozi</title>
-  <base href="/">
+  <title>Hozi Property Manager </title>
+  <base href=".">
 
-  {{#unless environment.production}}
+<!-- remove this on Prod -->
   <script src="/ember-cli-live-reload.js" type="text/javascript"></script>
-  {{/unless}}
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="css/fontawesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/mdl/material.min.css">
-  <link rel="stylesheet" href="css/home.css">
-
+  <link rel="stylesheet" href="css/framework.css">
+  <link rel="stylesheet" href="css/salesforce-lightning-design-system.min.css">
 </head>
 
 <style>
@@ -59,22 +57,27 @@ img.ri:empty
 
   </style>
 <body>
-  <hozi-app >
-     <img src="assets/269.gif" class="ri" />
 
-  </hozi-app>
+  <hozi-pm-app >
+     <img src="assets/387.gif" class="ri" />
+
+  </hozi-pm-appp>
 
   
 
-    {{#each scripts.polyfills}}<script src="{{.}}"></script>{{/each}}
+     <script src="vendor/es6-shim/es6-shim.js">
+     </script><script src="vendor/reflect-metadata/Reflect.js">
+     </script><script src="vendor/systemjs/dist/system.src.js">
+     </script><script src="vendor/zone.js/dist/zone.js"></script>
+     
     <script>
       System.import('system-config.js').then(function () {
-        System.import('main');
+        System.import('pm.js');
       }).catch(console.error.bind(console));
     </script>
 
   
-<script src="css/mdl/material.min.js">
+
 
 
 </body>

@@ -1,0 +1,162 @@
+  <div class='has-error' *ngIf='errorMessage'>
+    
+    
+    <div class="slds-notify_container">
+  <div class="slds-notify slds-notify--alert slds-theme--alert-texture" role="alert">
+    <button class="slds-button slds-button--icon-inverse slds-notify__close">
+      <svg aria-hidden="true" class="slds-button__icon">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>
+      <span class="slds-assistive-text">Close</span>
+    </button>
+    <span class="slds-assistive-text">Info</span>
+    <h2>{{errorMessage}}</h2>
+  </div>
+</div>
+    
+    
+    </div>
+
+<form (ngSubmit)="onSave(propertyForm.value)" #propertyForm="ngForm">
+<div class="slds-size--1-of-1">
+   
+
+            <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label">Property Names / Type</legend>
+                <div class="form-element__group ">
+                    <div class="slds-form-element__row">
+                    <div class="slds-form-element slds-size--1-of-2">
+                        <label class="slds-form-element__label" for="input-01">Property Name</label>
+                        <input id="input-pmname" class="slds-input" type="text" 
+                        placeholder="Property Name" 
+                        ngControl="name" 
+                        required />
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="select-01">Property Type</label>
+                        <div class="slds-form-element__control">
+                            <div class="slds-select_container">
+                            <select id="select-pmtype" class="slds-select" 
+                            required
+                            ngControl="type" 
+                            >
+                              <option *ngFor="let p of PropertyType" [value]="p">{{p}}</option>
+                            </select>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </fieldset>
+
+             <fieldset class="slds-form--compound" ngControlGroup="contact">
+                <legend class="slds-form-element__label">Property Contacts</legend>
+                  <div class="form-element__group ">
+                      <div class="slds-form-element__row">
+                       <div class="slds-form-element slds-size--1-of-2">
+                        <label class="slds-form-element__label" for="input-01">Contact Name</label>
+                        <input id="input-pmcontact" class="slds-input" type="text" 
+                        placeholder="Contact Name" 
+                        required
+                        ngControl="name" 
+                   
+                         />
+                      </div>
+                       <div class="slds-form-element slds-size--1-of-2">
+                            <label class="slds-form-element__label" for="input-02">Contact Phone</label>
+                            <input id="input-pmphone" class="slds-input" type="tel"
+                            placeholder="Contact Phone" 
+                             required
+                            ngControl="phonenumber" 
+                               />
+                        </div>
+                      
+                    </div>
+                </div>
+                </fieldset>
+
+                 <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label">Property Status /Description </legend>
+                  <div class="form-element__group ">
+                      <div class="slds-form-element__row">
+                        <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="select-01">Status</label>
+                        <div class="slds-form-element__control">
+                            <div class="slds-select_container">
+                            <select id="select-pmstatus" class="slds-select" ngControl="status" >
+                                <option>For Rent</option>
+                                <option>For Sale</option>
+                              
+                            </select>
+                            </div>
+                        </div>
+                        </div>
+                     <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="textarea-input-01">Property Description</label>
+                        <div class="slds-form-element__control">
+                            <textarea id="textarea-input-02" class="slds-textarea" placeholder="Property Description" 
+                            required 
+                            ngControl="description"
+                             ></textarea>
+                        </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                </fieldset>
+
+                  <fieldset class="slds-form--compound" ngControlGroup="location">
+                <legend class="slds-form-element__label">Location </legend>
+                  <div class="form-element__group ">
+                      <div class="slds-form-element__row">
+                      
+                     <div class="slds-form-element slds-size--1-of-2">
+                            <label class="slds-form-element__label" for="input-02">Location name</label>
+                            <input id="input-pmlocaname" class="slds-input" type="text" 
+                             ngControl="name"
+                              />
+                        </div>
+                      
+                    </div>
+                </div>
+                </fieldset>
+<legend class="slds-form-element__label">Click on a Location On The map </legend>
+<div>
+<sebm-google-map 
+   [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="4"
+    (mapClick)="mapClicked($event)">
+>
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng">
+
+  </sebm-google-map-marker>
+</sebm-google-map>
+</div>
+
+
+
+
+ 
+
+</div> 
+<div class="slds-m-around--small">
+  <button type="submit" 
+       class="slds-button slds-button--neutral  slds-size--1-of-1 slds-theme--inverse" aria-live="assertive" 
+      
+         >
+        <span class="fa-stack">
+				 <i class="fa fa-plus "></i>
+			</span>
+      Save
+</button>  
+</div>  
+</form>
+
+     
+       
+      
+
+  
+
+
